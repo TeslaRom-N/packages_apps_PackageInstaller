@@ -108,6 +108,7 @@ public class PackageInstallerActivity extends OverlayTouchActivity implements On
     private Button mCancel;
     CaffeinatedScrollView mScrollView = null;
     private boolean mOkCanInstall = false;
+    private boolean mOkEnabled;
 
     static final String PREFS_ALLOWED_SOURCES = "allowed_sources";
 
@@ -258,7 +259,7 @@ public class PackageInstallerActivity extends OverlayTouchActivity implements On
         super.onResume();
 
         if (mOk != null) {
-            mOk.setEnabled(mOkCanInstall);
+            mOk.setEnabled(mOkEnabled);
         }
     }
 
@@ -268,6 +269,7 @@ public class PackageInstallerActivity extends OverlayTouchActivity implements On
 
         if (mOk != null) {
             // Don't allow the install button to be clicked as there might be overlays
+            mOkEnabled = mOk.isEnabled();
             mOk.setEnabled(false);
         }
     }
